@@ -17,7 +17,7 @@ using namespace std;
 #define REMAX(a,b) (a)=max((a),(b));
 #define REMIN(a,b) (a)=min((a),(b));
 #define DBG cerr << "debug here" << endl;
-#define DBGV(vari) cerr << #vari<< " = "<< (vari) <<endl;
+#define DBGV(vari) cerr << #vari<< " = "<< (vari) <<endl; 
 typedef long long ll;
 
 vector<int>arr[1000001];
