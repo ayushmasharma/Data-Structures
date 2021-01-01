@@ -1,3 +1,6 @@
+// A knight moves in an “L-shape” i.e. they can move two squares in any direction vertically followed by one square horizontally, or two squares in any direction horizontally followed by one square vertically.
+
+
 #include<bits/stdc++.h>
 using namespace std;
 #define pb push_back
