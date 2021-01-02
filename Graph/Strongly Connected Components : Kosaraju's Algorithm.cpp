@@ -13,7 +13,7 @@ Step 2 : Reversal (Transpose Graph)
          Reverse directions of all arcs to obtain the transpose graph.
 Step 3 : Second time DFS 
          One by one pop a vertex from S while S is not empty. Let the popped vertex be ‘v’. 
-		 Take v as source and do DFS. The DFS starting from v prints strongly connected component of v.
+	 Take v as source and do DFS. The DFS starting from v prints strongly connected component of v.
          
 We do a DFS of graph and store vertices according to their finish times (out time), 
 Since, the out time of a vertex that connects to other SCCs (other that its own SCC), will always be greater than out time of vertices in the other SCC.
@@ -62,8 +62,8 @@ void dfs2(int node)
 	vis[node]=1;
 	for(int child : tr[node])
 		if(!vis[child]) 
-			dfs2(child);  // in the second dfs run, we are storingthe strongly connected components
-	ssc.pb(node);
+			dfs2(child);  
+	ssc.pb(node);     // in the second dfs run, we are storing the strongly connected components
 }
 
 
@@ -79,7 +79,7 @@ int main()
 		while(m--)
 		{
 			cin>>a>>b;     // there is an edge from a to b 
-			arr[a].pb(b);   // in the original list
+			arr[a].pb(b);  // in the original list
 			tr[b].pb(a);   // in the transpose list
 		}
 		FORI(i,n) 
