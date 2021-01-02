@@ -1,3 +1,28 @@
+/* 
+
+A directed graph is strongly connected if there is a directed path from any vertex to every other vertex.
+A strongly connected component (SCC) of a directed graph is a maximal strongly connected subgraph. 
+
+Kosaraju's Algorithm finds the strongly connected components of a DAG in O(V+E) time. This algorithm is DFS based. It does DFS two times.
+
+Algorithm :
+
+Step 1 : First time DFS 
+         Create an empty stack ‘S’ and do DFS traversal of a graph. In DFS traversal, after calling recursive DFS for adjacent vertices of a vertex, push the vertex to stack.
+Step 2 : Reversal (Transpose Graph)
+         Reverse directions of all arcs to obtain the transpose graph.
+Step 3 : Second time DFS 
+         One by one pop a vertex from S while S is not empty. Let the popped vertex be ‘v’. 
+		 Take v as source and do DFS. The DFS starting from v prints strongly connected component of v.
+         
+We do a DFS of graph and store vertices according to their finish times (out time), 
+Since, the out time of a vertex that connects to other SCCs (other that its own SCC), will always be greater than out time of vertices in the other SCC.
+In the reversed graph, the edges that connect two components are reversed.
+So if we do a DFS of the reversed graph using sequence of vertices in stack, we process vertices from sink to source (in reversed graph). 
+That is what we wanted to achieve and that is all needed to print SCCs one by one.
+
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 #define pb push_back
