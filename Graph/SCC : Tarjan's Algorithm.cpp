@@ -59,14 +59,14 @@ int timer=1, scc_count=0;
 
 void dfs(int node)
 {
-	vis[node]=1;                                                		   // mark the node as visited
-low[node]=in[node]=timer++;					     		   // Mark the in and low time of node according to the timer
-	inStack[node]=true;	                                                   // We will push the node in stack, so mark the node to be true in inStack
-	s.push(node);                                                              // Push the node in the stack
+	vis[node]=1;                                                               // mark the node as visited
+	low[node]=in[node]=timer++;						   // Mark the in and low time of node according to the timer
+	inStack[node]=true;							   // We will push the node in stack, so mark the node to be true in inStack
+	s.push(node);                                                  		   // Push the node in the stack
 	
-	for(int i : arr[node])                                                     // Traversing all the children of the node
+	for(int i : arr[node])                                         		   // Traversing all the children of the node
 	{
-		                                                                   // If the node is visited and it is not in the inStack, we will not take the case (as there will be a crossedge)
+		                                                   	       	   // If the node is visited and it is not in the inStack, we will not take the case (as there will be a crossedge)
 		if(vis[i]==true && inStack[i]==true)                               // If the node is visited and it is in the inStack, means the children is in the same SCC (It's a backedge) 
 			low[node]=min(in[i],low[node]);                            // Case 2 : Back edge (Updating the low time of node)
 		else
@@ -79,7 +79,7 @@ low[node]=in[node]=timer++;					     		   // Mark the in and low time of node ac
 			}
 		}
 	}
-	if(low[node]==in[node])                                        		   // Case for the head node of the SSC
+	if(low[node]==in[node])                                                    // Case for the head node of the SSC
 	{
 		scc_count++;
 		cout<<"Strongly Connected Component "<<scc_count<<" : "<<endl;
@@ -88,7 +88,7 @@ low[node]=in[node]=timer++;					     		   // Mark the in and low time of node ac
 			int temp=s.top();
 			s.pop(), inStack[temp]=false;
 			cout<<temp<<" ";
-			if(temp==node) break;                                 	   // Popping and printing the elements from the stack until we take the head out of stack
+			if(temp==node) break;                                     // Popping and printing the elements from the stack until we take the head out of stack
 		}
 		cout<<endl;
 	}
@@ -96,15 +96,13 @@ low[node]=in[node]=timer++;					     		   // Mark the in and low time of node ac
 
 int main()
 {
-	int t,n,m,a,b;
-	while(t--)
-	{
-		cin>>n>>m;                                          	    // n is the number of vertices and m is the number of edges
-		while(m--)
-			cin>>a>>b, arr[a].pb(b);                            // There is an edge fron a to b
-		FORI(i,n) vis[i]=false, inStack[i]=false;      	            // Clearing the lists for each test case
-		FORI(i,n)
-			if(!vis[i])
-				dfs(i);                                     // Making the DFS call if vertice is not visited
-	}
+	int n,m,a,b;
+	cin>>n>>m;                                                  // n is the number of vertices and m is the number of edges
+	FORI(i,m)
+		cin>>a>>b, arr[a].pb(b);                            // There is an edge fron a to b
+	FORI(i,n) vis[i]=false, inStack[i]=false;                   // Clearing the lists for each test case
+	FORI(i,n)
+		if(!vis[i])
+			dfs(i);                                     // Making the DFS call if vertice is not visited
+	
 }
