@@ -67,7 +67,7 @@ int main()
 			if(size>1)
 			for(int node : ssc)
 			   res[node-1]=1;
-	    }
-	    FOR(i,n)
-			cout<<res[i]<<" ";
+	        }
+       FOR(i,n)
+	  cout<<res[i]<<" ";
 }
